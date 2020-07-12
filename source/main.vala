@@ -18,10 +18,10 @@ int main (string[] args) {
             hexpand = true;
             vexpand = true;
             add_css_class ("compact");
-            // max_columns = 200;
+            max_columns = 200;
         }
 
-        var color_model = new Gtk4Demo.ColorListModel (4096);
+        var color_model = new Gtk4Demo.ColorListModel (N_COLORS);
         var factory = new Gtk.SignalListItemFactory ();
         var selection = new Gtk.NoSelection (color_model);
         factory.setup.connect (setup_colorlist_cb);
