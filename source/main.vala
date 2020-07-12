@@ -52,6 +52,7 @@ public class Gtk4Demo.ColorWidget : GLib.Object, Gdk.Paintable {
         _color = { r, g, b, 1.0f };
         this.color_name = name;
         this.color = _color;
+        // print ("Name: %s, red: %f, green: %f, blue: %f\n", color_name, red, green, blue);
         // Object(color: _color, color_name: name);
     }
 
@@ -227,6 +228,7 @@ public class Gtk4Demo.ColorListModel : GLib.Object, GLib.ListModel {
                 var blue = int.parse (fields[5]);
 
                 uint pos = ((red & 0xFF) << 16) | ((green & 0xFF) << 8) | blue;
+                // print ("Pos in ListMode: %u\n", pos);
 
                 if (colors[pos] == null) {
                     colors[pos] = new ColorWidget (name, red / 255f, green / 255f, blue / 255f);
@@ -260,6 +262,7 @@ public class Gtk4Demo.ColorListModel : GLib.Object, GLib.ListModel {
     requires (position < size) /* One less than size? */
     {
         var pos = position_to_color (position);
+        // print ("Position: %u, Size: %u\n", position, size);
 
         if (colors[pos] == null) {
             uint red, green, blue;
@@ -292,13 +295,19 @@ public class Gtk4Demo.ColorListModel : GLib.Object, GLib.ListModel {
             0x030000, 0x000300, 0x000003,
             0x010000, 0x000100, 0x000001
         };
-        uint i = 0, result = 0;
-        foreach (var element in map) {
+        uint result = 0;
+        for (uint i = 0; i < map.length; i++) {
             if ((position & (1 << i)) > 0) {
                 result ^= map[i];
-                i++;
             }
         }
+        //  foreach (var element in map) {
+        //      if ((position & (1 << i)) > 0) {
+        //          result ^= map[i];
+        //          i++;
+        //      }
+        //  }
+        //print ("For Position: %u, result is: %u\n", position, result);
         return result;
     }
 }
