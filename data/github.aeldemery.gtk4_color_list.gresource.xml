@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/github/aeldemery/gtk4_color_list">
+        <file>color.names.txt</file>
+    </gresource>
+</gresources>
