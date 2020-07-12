@@ -7,7 +7,7 @@
 ## About <a name = "about"></a>
 
 Test area to debug and test minimal implementation of `listview_colors.c` in vala.
-Currently listview display only 4 colors, I'm trying to find the bug behind?
+~~Currently listview display only 4 colors, I'm trying to find the bug behind?~~
 
 
 ### Prerequisites
