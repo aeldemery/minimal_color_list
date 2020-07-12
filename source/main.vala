@@ -12,6 +12,7 @@ int main (string[] args) {
         window.set_child (sw);
 
         var gridview = new Gtk.GridView ();
+        // see issue https://gitlab.gnome.org/GNOME/gtk/-/issues/2924
         // gridview.set_max_columns(2000);
         with (gridview) {
             hexpand = true;
@@ -213,9 +214,9 @@ public class Gtk4Demo.ColorListModel : GLib.Object, GLib.ListModel {
                 GLib.ResourceLookupFlags.NONE
             );
 
-            var lines = ((string) data.get_data()).split ("\n");
+            var lines = ((string) data.get_data ()).split ("\n");
             foreach (var line in lines) {
-                if ((line.get(0) == '#') || (line.get(0) == '\0')) {
+                if ((line.get (0) == '#') || (line.get (0) == '\0')) {
                     continue;
                 }
                 var fields = line.split (" ");
