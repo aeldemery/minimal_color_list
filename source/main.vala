@@ -18,14 +18,20 @@ int main (string[] args) {
             hexpand = true;
             vexpand = true;
             add_css_class ("compact");
-            max_columns = 200;
+            max_columns = 24;
         }
 
-        var color_model = new Gtk4Demo.ColorListModel (N_COLORS);
+        var color_model = new Gtk4Demo.ColorListModel (4096);
         var factory = new Gtk.SignalListItemFactory ();
         var selection = new Gtk.NoSelection (color_model);
+
+        var numeric_sorter = new Gtk.NumericSorter (new Gtk.PropertyExpression (typeof (Gtk4Demo.ColorWidget), null, "red"));
+        numeric_sorter.set_sort_order (Gtk.SortType.DESCENDING);
+        
+        var sorters = new Gtk.SortListModel(color_model, numeric_sorter);
+        
         factory.setup.connect (setup_colorlist_cb);
-        gridview.model = selection;
+        gridview.model = sorters;
         gridview.factory = factory;
 
         sw.set_child (gridview);
@@ -301,13 +307,13 @@ public class Gtk4Demo.ColorListModel : GLib.Object, GLib.ListModel {
                 result ^= map[i];
             }
         }
-        //  foreach (var element in map) {
-        //      if ((position & (1 << i)) > 0) {
-        //          result ^= map[i];
-        //          i++;
-        //      }
-        //  }
-        //print ("For Position: %u, result is: %u\n", position, result);
+        // foreach (var element in map) {
+        // if ((position & (1 << i)) > 0) {
+        // result ^= map[i];
+        // i++;
+        // }
+        // }
+        // print ("For Position: %u, result is: %u\n", position, result);
         return result;
     }
 }
