@@ -22,3 +22,6 @@ meson build, ninja -C build
 ## Screenshot
 
 ![Screenshot](https://github.com/aeldemery/minimal_color_list/blob/master/Screenshot%201.png)
+
+After Sorting by the Red Color
+![Screenshot2](https://github.com/aeldemery/minimal_color_list/blob/master/Screenshot%202.png)
